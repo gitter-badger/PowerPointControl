@@ -6,5 +6,6 @@
     tools:context=".DiapositivasFragment">
    <TextView android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:text="Diapositivas" />
+       android:text="Diapositivas"
+       android:textSize="36dp"/>
 </RelativeLayout>
