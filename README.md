@@ -6,7 +6,7 @@ An Android remote Microsoft PowerPoint Control
 Info
 -----------------
 
-This project contains only the remote control side, the Microsoft PowerPoint add-in side will be in another repository
+This project contains only the remote control side, the Microsoft PowerPoint add-In side is alocated in https://github.com/malainp/PowerPointControl-AddIn and is currently in development
 
 Features
 -----------------
