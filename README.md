@@ -1,7 +1,7 @@
 PowerPointControl
 =================
 
-An Android remote Microsoft PowerPoint Control
+An Android remote control for Microsoft PowerPoint
 
 Info
 -----------------
