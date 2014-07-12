@@ -1,22 +1,13 @@
 package com.PPCtrl.malain.powerpointcontrol;
 
-import java.util.Locale;
-
-import android.app.Activity;
 import android.app.ActionBar;
-import android.app.Fragment;
-import android.app.FragmentManager;
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.FragmentTransaction;
-import android.support.v13.app.FragmentPagerAdapter;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.PPCtrl.malain.adapter.TabsPagerAdapter;
 
@@ -27,7 +18,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
     private TabsPagerAdapter mAdapter;
     private ActionBar actionBar;
     //Titulos de pestañas
-    private String[] tabs = { "Actual", "Diapositivas"};
+    private String[] tabs = {"Actual", "Diapositivas"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +26,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
         setContentView(R.layout.activity_main);
 
         //Inicialización
-        viewPager = (ViewPager)findViewById(R.id.pager);
+        viewPager = (ViewPager) findViewById(R.id.pager);
         actionBar = getActionBar();
         mAdapter = new TabsPagerAdapter(getFragmentManager());
 
@@ -62,7 +53,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
         //Añadir pestañas
-        for (String tab_name : tabs){
+        for (String tab_name : tabs) {
             actionBar.addTab(actionBar.newTab().setText(tab_name).setTabListener(this));
         }
     }
@@ -80,11 +71,20 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setTitle("Acción");
+        switch (item.getItemId()){
+            case R.id.action_preview:
+                alertDialog.setMessage("Anterior");
+                break;
+            case R.id.action_next:
+                alertDialog.setMessage("Siguiente");
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
+        alertDialog.show();
+        return true;
     }
 
     @Override
