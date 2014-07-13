@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -14,6 +15,8 @@ import com.PPCtrl.malain.adapter.TabsPagerAdapter;
 
 public class MainActivity extends Activity implements ActionBar.TabListener {
 
+    private final int ANTERIOR = 1;
+    private final int SIGUIENTE = 2;
     private ViewPager viewPager;
     private TabsPagerAdapter mAdapter;
     private ActionBar actionBar;
@@ -71,20 +74,38 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-        alertDialog.setTitle("Acción");
         switch (item.getItemId()){
             case R.id.action_preview:
-                alertDialog.setMessage("Anterior");
+                mensaje(ANTERIOR);
                 break;
             case R.id.action_next:
-                alertDialog.setMessage("Siguiente");
+                mensaje(SIGUIENTE);
                 break;
             default:
                 return super.onOptionsItemSelected(item);
         }
-        alertDialog.show();
         return true;
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event){
+        int action = event.getAction();
+        int keyCode = event.getKeyCode();
+
+        switch (keyCode){
+            case KeyEvent.KEYCODE_VOLUME_UP:
+                if (action == KeyEvent.ACTION_UP){
+                    mensaje(SIGUIENTE);
+                }
+                return true;
+            case KeyEvent.KEYCODE_VOLUME_DOWN:
+                if (action == KeyEvent.ACTION_DOWN){
+                    mensaje(ANTERIOR);
+                }
+                return true;
+            default:
+                return super.dispatchKeyEvent(event);
+        }
     }
 
     @Override
@@ -98,5 +119,20 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+    }
+
+    //----------------------------------------------------------------------------------------------
+    private void mensaje(int d){
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setTitle("Acción");
+        switch (d){
+            case ANTERIOR:
+                alertDialog.setMessage("Anterior");
+                break;
+            case SIGUIENTE:
+                alertDialog.setMessage("Siguiente");
+                break;
+        }
+        alertDialog.show();
     }
 }
