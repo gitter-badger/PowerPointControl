@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="5dp">
+
+    <LinearLayout
+        android:id="@+id/slide_thumbnail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="5dp"
+        android:padding="3dp">
+
+        <ImageView
+            android:id="@+id/slide_image"
+            android:contentDescription="@string/app_name"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_slide_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/slide_thumbnail"
+        android:layout_marginLeft="5dp"
+        android:layout_centerVertical="false"
+        android:paddingBottom="10dp"
+        android:text="Titulo"
+        android:textColor="#cc3400"
+        android:textSize="25dip"
+        android:textStyle="bold"
+        android:typeface="sans"/>
+    <TextView
+        android:id="@+id/tv_slide_note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/slide_thumbnail"
+        android:layout_below="@id/tv_slide_name"
+        android:layout_marginLeft="15dp"
+        android:text="Algun texto"
+        android:textColor="#ff797979"
+        android:textSize="12dip"
+        android:textStyle="normal"
+        android:typeface="sans"/>
+</RelativeLayout>

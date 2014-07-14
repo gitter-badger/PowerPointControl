@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 import com.PPCtrl.malain.adapter.TabsPagerAdapter;
 
@@ -64,7 +65,6 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
@@ -76,6 +76,15 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case R.id.action_preview:
+
+                //Prueba
+
+                String[] te = {"i1", "i2", "i3", "i4"};
+                CustomList adapter = new CustomList(this, te);
+                ListView list = (ListView)viewPager.getChildAt(1).findViewById(R.id.list_slides);
+                list.setAdapter(adapter);
+
+                //Fin prueba
                 mensaje(ANTERIOR);
                 break;
             case R.id.action_next:

@@ -3,9 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DiapositivasFragment">
-   <TextView android:layout_width="match_parent"
+    tools:context=".DiapositivasFragment"
+    android:id="@+id/fragment_diaps">
+   <!--<TextView android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:text="Diapositivas"
-       android:textSize="36dp"/>
+       android:textSize="36dp"/>-->
+    <ListView
+        android:id="@+id/list_slides"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:divider ="#ff2f2f2f"
+        android:dividerHeight="1dp"
+        tools:listitem="@layout/slide_list_item">
+        </ListView>
 </RelativeLayout>
