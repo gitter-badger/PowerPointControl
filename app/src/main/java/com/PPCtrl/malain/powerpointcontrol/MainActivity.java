@@ -106,15 +106,16 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
                 if (action == KeyEvent.ACTION_UP){
                     mensaje(SIGUIENTE);
                 }
-                return true;
+                break;
             case KeyEvent.KEYCODE_VOLUME_DOWN:
-                if (action == KeyEvent.ACTION_DOWN){
+                if (action == KeyEvent.ACTION_UP){
                     mensaje(ANTERIOR);
                 }
-                return true;
+                break;
             default:
                 return super.dispatchKeyEvent(event);
         }
+        return true;
     }
 
     @Override
